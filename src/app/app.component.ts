@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { PokemonService } from './pokemon.service';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,16 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
-  title = 'kata';
+export class AppComponent implements OnInit {
+  title = 'Kata';
+  pokemonList: any[] = [];
+
+  constructor(private pokemonService: PokemonService) {}
+
+  ngOnInit() {
+    this.pokemonService.getPokemons().subscribe((pokemons: any) => {
+      this.pokemonList = pokemons.results;
+       
+    });
+  }
 }
