@@ -12,13 +12,11 @@ import { AsyncPipe, CommonModule } from '@angular/common';
   templateUrl: './pokemon-cards.component.html',
   styleUrl: './pokemon-cards.component.scss'
 })
-export class PokemonCardsComponent implements OnInit {
-  ngOnInit(): void {}
-
-  
-  private route: ActivatedRoute = inject(ActivatedRoute);
+export class PokemonCardsComponent {
+  // ngOnInit(): void {}
+  // private route: ActivatedRoute = inject(ActivatedRoute);
   private pokemonService = inject(PokemonService);
-  pokemonId!: number;
+  // pokemonId!: number;
   pokemonCards$: Observable<Pokemon[]> = this.pokemonService.getAll();
   
 }
