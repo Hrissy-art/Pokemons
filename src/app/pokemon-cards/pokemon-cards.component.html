@@ -1,0 +1,11 @@
+<p>pokemon-cards works!</p>
+
+@for (pokemonCard of pokemonCards$ | async; track pokemonCard.id ) {
+  <div class="article-container">
+    <h1>{{ pokemonCard.name }}</h1>
+    <p>{{ pokemonCard.rarity }}</p>
+  </div>
+}
+
+
+  

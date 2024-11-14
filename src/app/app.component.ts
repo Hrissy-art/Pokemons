@@ -10,16 +10,16 @@ import { PokemonService } from './pokemon.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit {
-  title = 'Kata';
-  pokemonList: any[] = [];
+export class AppComponent  {
+  // // title = 'Kata';
+  // // pokemonList: any[] = [];
 
-  constructor(private pokemonService: PokemonService) {}
+  // // constructor(private pokemonService: PokemonService) {}
 
-  ngOnInit() {
-    this.pokemonService.getPokemons().subscribe((pokemons: any) => {
-      this.pokemonList = pokemons.results;
+  // // ngOnInit() {
+  // //   this.pokemonService.getPokemons().subscribe((pokemons: any) => {
+  // //     this.pokemonList = pokemons.results;
        
-    });
-  }
+  // //   });
+  // }
 }
