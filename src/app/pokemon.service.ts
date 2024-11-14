@@ -20,24 +20,21 @@ export class PokemonService {
   private apiUrl = 'https://api.pokemontcg.io/v2/cards';
   private http = inject(HttpClient);
 
+  getAll(): Observable<Pokemon[]> {
+    return this.http.get<{ data: Pokemon[] }>(this.apiUrl).pipe(
+      map(response => response.data) 
+    );
+  }
   // getAll(): Observable<Pokemon[]> {
   //   return this.http.get<Pokemon[]>(this.apiUrl);
   // }
 
-  // getAll(): Observable<Pokemon[]> {
-  //   const headers = new HttpHeaders().set('Cache-Control', 'no-cache');
-  //   return this.http.get<Pokemon[]>(this.apiUrl, { headers });
-  // }
     getPokemonsById(id: number): Observable<Pokemon> {
 
       return this.http.get<Pokemon>(`${this.apiUrl}/${id}`);
     }
   
-    getAll(): Observable<Pokemon[]> {
-      return this.http.get<{ data: Pokemon[] }>(this.apiUrl).pipe(
-        map(response => response.data) 
-      );
-    }
+   
   }
   
 

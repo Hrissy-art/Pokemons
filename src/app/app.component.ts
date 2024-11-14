@@ -11,15 +11,5 @@ import { PokemonService } from './pokemon.service';
   styleUrl: './app.component.scss'
 })
 export class AppComponent  {
-  // // title = 'Kata';
-  // // pokemonList: any[] = [];
-
-  // // constructor(private pokemonService: PokemonService) {}
-
-  // // ngOnInit() {
-  // //   this.pokemonService.getPokemons().subscribe((pokemons: any) => {
-  // //     this.pokemonList = pokemons.results;
-       
-  // //   });
-  // }
+ 
 }
