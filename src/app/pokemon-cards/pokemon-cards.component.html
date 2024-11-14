@@ -1,13 +1,9 @@
-<p>pokemon-cards works!</p>
-
-@for (pokemonCard of pokemonCards$ | async; track pokemonCard.id ) {
-  <div class="article-container">
-    <h1>{{ pokemonCard.name }}</h1>
-    <p>{{ pokemonCard.rarity }}</p>
-    <p>{{ pokemonCard.hp }}</p>
-
-  </div>
-}
-
+@if(cards$ | async; as cards) {
+    @for(card of cards; track $index) {
+    <p>{{ card.id }}</p>
+    <p>{{ card.name }}</p>
+    <img [src]="card.images.small" alt="image de la carte">
+    }
+    }
 
   

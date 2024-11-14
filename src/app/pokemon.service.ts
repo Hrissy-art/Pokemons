@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Pokemon } from './models/pokemon.model';
+import { Data, PokemonTcgApiResponse } from './models/pokemon-tcg.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -17,24 +18,15 @@ export class PokemonService {
   // }
 
 
-  private apiUrl = 'https://api.pokemontcg.io/v2/cards';
+  private readonly _BASE_API_URL: string = "https://api.pokemontcg.io/v2/";
   private http = inject(HttpClient);
 
-  getAll(): Observable<Pokemon[]> {
-    return this.http.get<{ data: Pokemon[] }>(this.apiUrl).pipe(
-      map(response => response.data) 
-    );
+  getAllCards$(): Observable<Data[]> {
+    return this.http.get<PokemonTcgApiResponse>(this._BASE_API_URL + "cards") // "https://api.pokemontcg.io/v2/cards"
+      .pipe(
+        map((response: PokemonTcgApiResponse) => response.data)
+      ); 
   }
-  // getAll(): Observable<Pokemon[]> {
-  //   return this.http.get<Pokemon[]>(this.apiUrl);
-  // }
-
-    getPokemonsById(id: number): Observable<Pokemon> {
-
-      return this.http.get<Pokemon>(`${this.apiUrl}/${id}`);
-    }
-  
-   
   }
   
 

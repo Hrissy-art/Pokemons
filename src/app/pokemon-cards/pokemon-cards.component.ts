@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { PokemonService } from '../pokemon.service';
 import { ActivatedRoute } from '@angular/router';
 import { AsyncPipe, CommonModule } from '@angular/common';
+import { Data } from '../models/pokemon-tcg.interface';
 
 @Component({
   selector: 'app-pokemon-cards',
@@ -13,10 +14,8 @@ import { AsyncPipe, CommonModule } from '@angular/common';
   styleUrl: './pokemon-cards.component.scss'
 })
 export class PokemonCardsComponent {
-  // ngOnInit(): void {}
-  // private route: ActivatedRoute = inject(ActivatedRoute);
-  private pokemonService = inject(PokemonService);
-  // pokemonId!: number;
-  pokemonCards$: Observable<Pokemon[]> = this.pokemonService.getAll();
+ 
+  private _pokemonTcgApiService: PokemonService = inject(PokemonService);
+  cards$: Observable<Data[]> = this._pokemonTcgApiService.getAllCards$();
   
 }
